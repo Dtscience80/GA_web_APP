@@ -29,3 +29,9 @@ st.text(header)
 st.text(" feature data anda : " )
 target = st.multiselect("Tentukan Target Feature seleksi", header)
 st.write('Target selected:', target)
+
+option = st.selectbox(
+     'How would you like to receive your package?',
+     header)
+
+st.write('You selected:', option)
