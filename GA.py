@@ -11,7 +11,9 @@ if file is not None:
     #Can be used wherever a "file-like" object is accepted:
     #df= pd.read_csv(file)
     df = pd.read_excel(file)
+    st.text("Berikut tabel data anda :") 
     st.dataframe(data)
 
+    st.text("Berikut deskripsi data anda :") 
 st.dataframe(data, width=1000)
 st.dataframe(data.describe())
