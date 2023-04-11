@@ -1,5 +1,20 @@
 import streamlit as st
 import pandas as pd
+from sklearn import linear_model
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
+from genetic_selection import GeneticSelectionCV
+from sklearn.neural_network import MLPRegressor
+from sklearn import metrics
+from sklearn.metrics import *
+from sklearn.model_selection import *
+#from google.colab import files, drive, data_table
+#from google.colab.data_table import *
+import numpy as np
+import matplotlib.pyplot as plt
+import time
+
+
 
 st.title('Fitur Seleksi dengan Genetic Algorithm')
 st.text("by @v1tr4") 
