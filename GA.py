@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import time
 
 html_temp = """
-		<div style="background-color:#FFA500;padding:10px;border-radius:10px">
+		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Feature Selection Genetic Algorithm</h1>
 		<h4 style="color:white;text-align:center;">Free Webb App by @v1tr4 </h4>
 		</div>
