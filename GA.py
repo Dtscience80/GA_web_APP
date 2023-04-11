@@ -76,8 +76,8 @@ nofeats = []
 chosen_feats = [] 
 cvscore = [] 
 
-st.text("Estimator dipakai : ", estimators )
-st.text("Target : ", Y )
+st.write("Estimator dipakai : ", estimators )
+st.write("Target : ", Y )
 for i in range(1,9):  
   selector = GeneticSelectionCV(estimators,
                                 cv = 5,
@@ -97,7 +97,7 @@ for i in range(1,9):
   selector = selector.fit(X, Y)
   genfeats = X.columns[selector.support_]
   genfeats = list(genfeats)
-  st.text("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
+  st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
 
   cv_score = selector.generation_scores_[-1]
   nofeats.append(len(genfeats)) 
@@ -110,5 +110,5 @@ report["Scores"] = cvscore
 #Lama waktu Proses 
 t2=time.time()
 t_polyfit = float(t2-t1)
-st.text("Time taken: {} seconds".format(t_polyfit))
+st.write("Time taken: {} seconds".format(t_polyfit))
 
