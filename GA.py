@@ -62,7 +62,7 @@ st.dataframe(X, width=1000)
 
 st.header('Fitur Seleksi ')
 
-Y = X[target].astype(float) 
+Y = data[target].astype(float) 
 
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
@@ -77,7 +77,7 @@ chosen_feats = []
 cvscore = [] 
 
 st.write("Estimator dipakai : ", estimators )
-st.write("Target : ", Y )
+st.write("Target : ", target )
 for i in range(1,9):  
   selector = GeneticSelectionCV(estimators,
                                 cv = 5,
