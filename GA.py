@@ -69,7 +69,7 @@ estimators = DecisionTreeRegressor()
 #estimators = RandomForestRegressor()
 #estimators = MLPRegressor()
 t1=time.time()
-st.text("Process Start", t1)
+st.write("Process Start", t1)
 
 report = pd.DataFrame()
 nofeats = [] 
