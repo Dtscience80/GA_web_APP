@@ -64,12 +64,12 @@ st.header('Fitur Seleksi ')
 
 Y = X[target].astype(float) 
 
-estimators = linear_model.LinearRegression()
-#estimators = DecisionTreeRegressor()
+#estimators = linear_model.LinearRegression()
+estimators = DecisionTreeRegressor()
 #estimators = RandomForestRegressor()
 #estimators = MLPRegressor()
 t1=time.time()
-st.text(t1)
+st.text("Process Start", t1)
 
 report = pd.DataFrame()
 nofeats = [] 
