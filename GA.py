@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-st.title('Streamlit Genetic Algorithm')
+st.title('Fitur Seleksi dengan Genetic Algorithm')
+st.text("by @v1tr4") 
 #upload single file and display it as a dataframe
 file = st.file_uploader("Please select a file to upload")
 #file = st.file_uploader("Upload file Excel", type=["xlsx", "xls"])
@@ -26,12 +27,15 @@ st.text(" feature data anda : " )
 st.text(header)
 
 #Multi select
-st.text(" feature data anda : " )
-target = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
-st.write('Feature drop:', target)
+st.text(" Drop Fitur yang tidak dipakai  : " )
+dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
+st.write('Feature drop:', dropdata)
 
 option = st.selectbox(
      'Tentukan target machine learning untuk fitur seleksi anda?',
      header)
 
 st.write('Target Fitur Seleksi:', option)
+
+X = data.drop(columns=dropdata) 
+
