@@ -14,7 +14,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-
+html_temp = """
+		<div style="background-color:#FFDA0F;padding:10px;border-radius:10px">
+		<h1 style="color:white;text-align:center;">Feature Selection Genetic Algorithm</h1>
+		<h4 style="color:white;text-align:center;">@v1tr4 </h4>
+		</div>
+		"""
+stc.html(html_temp)
 
 st.title('Fitur Seleksi dengan Genetic Algorithm')
 st.text("by @v1tr4") 
