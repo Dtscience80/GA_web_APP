@@ -27,11 +27,11 @@ st.text(header)
 
 #Multi select
 st.text(" feature data anda : " )
-target = st.multiselect("Tentukan Target Feature seleksi", header)
-st.write('Target selected:', target)
+target = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
+st.write('Feature drop:', target)
 
 option = st.selectbox(
-     'How would you like to receive your package?',
+     'Tentukan target machine learning untuk fitur seleksi anda?',
      header)
 
-st.write('You selected:', option)
+st.write('Target Fitur Seleksi:', option)
