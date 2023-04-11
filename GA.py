@@ -96,10 +96,6 @@ for i in range(1,9):
   selector = selector.fit(X, Y)
   genfeats = X.columns[selector.support_]
   genfeats = list(genfeats)
-  st.write("Chosen
-
-
-  genfeats = list(genfeats)
   st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
 
   cv_score = selector.generation_scores_[-1]
