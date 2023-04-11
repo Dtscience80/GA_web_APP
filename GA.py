@@ -18,13 +18,11 @@ import time
 html_temp = """
 		<div style="background-color:#FFDA0F;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Feature Selection Genetic Algorithm</h1>
-		<h4 style="color:white;text-align:center;">@v1tr4 </h4>
+		<h4 style="color:white;text-align:center;">Free Webb App by @v1tr4 </h4>
 		</div>
 		"""
 stc.html(html_temp)
 
-st.title('Fitur Seleksi dengan Genetic Algorithm')
-st.text("by @v1tr4") 
 #upload single file and display it as a dataframe
 file = st.file_uploader("Please select a file to upload")
 #file = st.file_uploader("Upload file Excel", type=["xlsx", "xls"])
