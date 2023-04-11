@@ -59,8 +59,8 @@ st.header('Fitur Seleksi ')
 
 Y = X[target].astype(float) 
 
-#estimators = linear_model.LinearRegression()
-estimators = DecisionTreeRegressor()
+estimators = linear_model.LinearRegression()
+#estimators = DecisionTreeRegressor()
 #estimators = RandomForestRegressor()
 #estimators = MLPRegressor()
 t1=time.time()
