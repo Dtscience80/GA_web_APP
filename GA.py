@@ -25,3 +25,7 @@ header = data.columns.tolist()
 st.text(" feature data anda : " )
 st.text(header)
 
+#Multi select
+st.text(" feature data anda : " )
+target = st.multiselect("Tentukan Target Feature seleksi", header)
+st.write('Target selected:', target)
