@@ -1,3 +1,4 @@
+
 import streamlit as st
 import streamlit.components.v1 as stc
 import pandas as pd
@@ -9,8 +10,6 @@ from sklearn.neural_network import MLPRegressor
 from sklearn import metrics
 from sklearn.metrics import *
 from sklearn.model_selection import *
-#from google.colab import files, drive, data_table
-#from google.colab.data_table import *
 import numpy as np
 import matplotlib.pyplot as plt
 import time
@@ -97,6 +96,10 @@ for i in range(1,9):
   selector = selector.fit(X, Y)
   genfeats = X.columns[selector.support_]
   genfeats = list(genfeats)
+  st.write("Chosen
+
+
+  genfeats = list(genfeats)
   st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
 
   cv_score = selector.generation_scores_[-1]
@@ -111,4 +114,3 @@ report["Scores"] = cvscore
 t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
-
