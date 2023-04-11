@@ -42,7 +42,7 @@ st.dataframe(X, width=1000)
 
 st.header('Fitur Seleksi ')
 
-Y = target.astype(float)
+Y = X[target].astype(float) 
 
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
