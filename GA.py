@@ -18,3 +18,10 @@ st.text("Berikut tabel data anda :")
 st.dataframe(data, width=1000)
 st.text("Berikut deskripsi data anda :") 
 st.dataframe(data.describe())
+
+st.sidebar.text('Feature seleksi ')
+st.sidebar.text('Genetic ALgorithm')
+header = data.columns.tolist()
+st.text(" feature data anda : " )
+st.text(header)
+
