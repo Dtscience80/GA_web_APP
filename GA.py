@@ -40,7 +40,7 @@ st.text(dropdata)
 
 aktif = st.button("Aktifkan")
 st.text(aktif)
-#if (aktif=='True')
-X = data.drop(columns=dropdata) 
-st.dataframe(X, width=1000)
+if (aktif=="True")
+    X = data.drop(columns=dropdata) 
+    st.dataframe(X, width=1000)
 
