@@ -5,4 +5,5 @@ matplotlib
 seaborn
 pyDeck
 sklearn-genetic
+genetic_selection
 
