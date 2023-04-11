@@ -14,6 +14,6 @@ if file is not None:
     st.text("Berikut tabel data anda :") 
     st.dataframe(data)
 
-    st.text("Berikut deskripsi data anda :") 
+st.text("Berikut deskripsi data anda :") 
 st.dataframe(data, width=1000)
 st.dataframe(data.describe())
