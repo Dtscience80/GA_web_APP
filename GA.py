@@ -31,16 +31,12 @@ st.text(" Drop Fitur yang tidak dipakai  : " )
 dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
 st.write('Feature drop:', dropdata)
 
-option = st.selectbox(
-     'Tentukan target machine learning untuk fitur seleksi anda?',
-     header)
+option = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda?', header)
 
 st.write('Target Fitur Seleksi:', option)
 st.text(dropdata)
 
-aktif = st.button("Aktifkan")
-st.text(aktif)
-if (aktif)
-    X = data.drop(columns=dropdata) 
-    st.dataframe(X, width=1000)
+st.text(" Data Anda " )
+X = data.drop(columns=dropdata) 
+st.dataframe(X, width=1000)
 
