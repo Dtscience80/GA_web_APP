@@ -1,5 +1,5 @@
-!pip uninstall numpy
-!pip install numpy==1.23.1
+pip uninstall numpy
+pip install numpy==1.23.1
 
 import streamlit as st
 import streamlit.components.v1 as stc
