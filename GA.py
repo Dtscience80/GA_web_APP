@@ -41,6 +41,7 @@ aktif = st.button("Aktifkan")
 st.text(aktif)
 #if (aktif=='True')
 drop_list = list(dropdata.values())
+st.text(drop_list)
 X = data.drop(columns=drop_list) 
 st.dataframe(X, width=1000)
 
