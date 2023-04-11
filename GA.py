@@ -15,3 +15,7 @@ if file is not None:
 
 st.dataframe(data, width=1000)
 st.dataframe(data.describe())
+
+st.sidebar.text('Feature seleksi dengan ALgoritma Genetic ALgorithm')
+header = data.columns.tolist()
+st.subheader(" feature data anda : " + header )
