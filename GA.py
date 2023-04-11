@@ -38,7 +38,8 @@ option = st.selectbox(
 st.write('Target Fitur Seleksi:', option)
 
 aktif = st.button("Aktifkan")
-if (aktif=='True')
+st.text(aktif)
+#if (aktif=='True')
     X = data.drop(columns=dropdata) 
     st.dataframe(X, width=1000)
 
