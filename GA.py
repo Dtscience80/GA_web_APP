@@ -96,7 +96,7 @@ for i in range(1,9):
   selector = selector.fit(X, Y)
   genfeats = X.columns[selector.support_]
   genfeats = list(genfeats)
-  st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
+  #st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
 
   cv_score = selector.generation_scores_[-1]
   nofeats.append(len(genfeats)) 
@@ -110,3 +110,13 @@ report["Scores"] = cvscore
 t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
+
+#Print Reports 
+report["Scores"] = np.round(report["Scores"], 3)
+report.sort_values(by = "Scores", ascending = False, inplace = True)
+#report.index
+ga_feats = report.iloc[0]["Chosen Feats"]
+DataTable(report)
+st.write("Feature selection of '" + Y.name + "' recommend:", ga_feats)
+st.write("Estimator : {}, reports : ". format(selector.estimator_))
+report
