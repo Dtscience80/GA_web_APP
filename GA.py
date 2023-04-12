@@ -49,13 +49,13 @@ target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda
 st.write('Target Fitur Seleksi:', target)
 
 #Multi select
-st.text(" Drop Fitur yang tidak dipakai  : " )
+#st.text(" Drop Fitur yang tidak dipakai  : " )
 dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
 st.write('Feature drop:', dropdata)
 
 #st.text(dropdata)
 
-st.text(" Data Anda " )
+st.text(" Data Anda setelah di filter " )
 X = data.drop(columns=dropdata) 
 st.dataframe(X, width=1000)
 
