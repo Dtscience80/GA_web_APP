@@ -15,10 +15,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import time
 
-'''
-np.__version__ = '1.23'
-st.text(np.__version__)
-'''
+
 
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
