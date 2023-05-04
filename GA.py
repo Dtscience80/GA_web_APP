@@ -130,7 +130,7 @@ fig = plt.figure(figsize=(12,10))
 #fig = plt.show()
 
 #plt.figure(figsize=(12,10))
-cor = X.corr()
+cor = Xd.corr()
 ax = sns.heatmap(abs(cor), cmap='PuBuGn' , annot=True, fmt=".2f")
 fig = plt.show()
 st.pyplot(fig)
