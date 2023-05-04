@@ -4,7 +4,7 @@ import streamlit.components.v1 as stc
 import pandas as pd
 from sklearn import linear_model
 import sklearn.ensemble as ske
-#from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor
 #from sklearn.tree import DecisionTreeRegressor
 #from genetic_selection import GeneticSelectionCV
 from sklearn.neural_network import MLPRegressor
@@ -12,6 +12,7 @@ from sklearn.linear_model import RidgeCV, LassoCV
 from sklearn import metrics
 from sklearn.metrics import *
 from sklearn.model_selection import *
+
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
@@ -191,7 +192,7 @@ st.subheader(" 6. Random Forest (RF) algorithm")
 t1=time.time()
 st.write("Process Start", t1)
 
-reg = ske.RandomForestRegressor()
+reg = RandomForestRegressor()
 reg.fit(X, a)
 fet_ind = np.argsort(reg.feature_importances_)[::-1]
 fet_imp = reg.feature_importances_[fet_ind]
