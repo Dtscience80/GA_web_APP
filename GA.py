@@ -100,6 +100,8 @@ st.dataframe(data.describe())
 #st.sidebar.text('Feature seleksi ')
 #st.sidebar.text('Genetic ALgorithm')
 header = data.columns.tolist()
+
+st.markdown(' ##### Filter data yang dipakai ! ')
 st.text(" feature data anda : " )
 st.text(header)
 
