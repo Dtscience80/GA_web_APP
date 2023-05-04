@@ -79,7 +79,7 @@ fig = plt.show()
 st.pyplot(fig)
 
 #Correlation with output variable ex. CL
-cor_target = abs(cor["CL"])
+cor_target = abs(cor[target])
 #Selecting highly correlated features
 relevant_features_CL = cor_target[cor_target>0.5]
 st.write('Feature yang relevan untuk target ' + target + ' adalah : ', relevant_features_CL)
