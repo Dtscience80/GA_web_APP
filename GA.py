@@ -141,5 +141,18 @@ t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
+st.subheader(" 4. Sequential Floating Selection untuk target CL ")
+
+X1 = np.array(X)
+sbs = SFS(LinearRegression(),
+         k_features=4,
+         forward=False,
+         floating=True,
+         cv=0)
+sbs.fit(X1, a)
+label = list(map(int, sbs.k_feature_names_))
+feature_name = X.columns.values
+labels = feature_name[label]
+st.write("Hasil Sequential Floating Selection : ", labels)
 
 
