@@ -25,6 +25,22 @@ sys.modules['sklearn.externals.joblib'] = joblib
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.linear_model import LinearRegression
 
+def embed(fung(), x, y, model, target):
+    import matplotlib
+    reg = fung()
+    reg.fit(x, y)
+    st.write("Best alpha using " + model + ": %f" % reg.alpha_)
+    st.write("Best score using " + model + ": %f" %reg.score(x,y))
+    coef = pd.Series(reg.coef_, index = x.columns)
+    st.write("Lasso picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
+    imp_coef = coef.sort_index()
+    matplotlib.rcParams['figure.figsize'] = (8.0, 10.0)
+    imp_coef.plot(kind = "barh")
+    plt.title("Feature importance using " + model " target " + target)
+    fig = plt.show()
+    st.pyplot(fig)
+
+
 def forward_selection(data, target, significance_level=0.05):
     initial_features = data.columns.tolist()
     best_features = []
@@ -165,20 +181,8 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 st.subheader(" 5. Embedded Selection algorithm")
 t1=time.time()
 st.write("Process Start", t1)
+embed(LassoCV(), X, Y, 'Lasso CV', target):
 
-import matplotlib
-reg = LassoCV()
-reg.fit(X, Y)
-st.write("Best alpha using built-in LassoCV: %f" % reg.alpha_)
-st.write("Best score using built-in LassoCV: %f" %reg.score(X,Y))
-coef = pd.Series(reg.coef_, index = X.columns)
-st.write("Lasso picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
-imp_coef = coef.sort_index()
-matplotlib.rcParams['figure.figsize'] = (8.0, 10.0)
-imp_coef.plot(kind = "barh")
-plt.title("Feature importance using Lasso Model - CL")
-fig = plt.show()
-st.pyplot(fig)
 
 t2=time.time()
 t_polyfit = float(t2-t1)
