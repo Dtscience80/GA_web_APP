@@ -149,7 +149,7 @@ sbs = SFS(LinearRegression(),
          forward=False,
          floating=True,
          cv=0)
-sbs.fit(X1, a)
+sbs.fit(X1, Y)
 label = list(map(int, sbs.k_feature_names_))
 feature_name = X.columns.values
 labels = feature_name[label]
