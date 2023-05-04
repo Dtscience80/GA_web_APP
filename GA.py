@@ -3,10 +3,12 @@ import streamlit as st
 import streamlit.components.v1 as stc
 import pandas as pd
 from sklearn import linear_model
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.tree import DecisionTreeRegressor
-from genetic_selection import GeneticSelectionCV
+import sklearn.ensemble as ske
+#from sklearn.ensemble import RandomForestRegressor
+#from sklearn.tree import DecisionTreeRegressor
+#from genetic_selection import GeneticSelectionCV
 from sklearn.neural_network import MLPRegressor
+from sklearn.linear_model import RidgeCV, LassoCV
 from sklearn import metrics
 from sklearn.metrics import *
 from sklearn.model_selection import *
@@ -141,8 +143,9 @@ t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
-st.subheader(" 4. Sequential Floating Selection untuk target CL ")
-
+st.subheader(" 4. Sequential Floating Selection Algorithm")
+t1=time.time()
+st.write("Process Start", t1)
 X1 = np.array(X)
 sbs = SFS(LinearRegression(),
          k_features=4,
@@ -154,5 +157,33 @@ label = list(map(int, sbs.k_feature_names_))
 feature_name = X.columns.values
 labels = feature_name[label]
 st.write("Hasil Sequential Floating Selection : ", labels)
+t2=time.time()
+t_polyfit = float(t2-t1)
+st.write("Time taken: {} seconds".format(t_polyfit))
+
+
+st.subheader(" 5. Embedded Selection algorithm")
+t1=time.time()
+st.write("Process Start", t1)
+
+import matplotlib
+reg = LassoCV()
+reg.fit(X, Y)
+print("Best alpha using built-in LassoCV: %f" % reg.alpha_)
+print("Best score using built-in LassoCV: %f" %reg.score(X,Y))
+coef = pd.Series(reg.coef_, index = X.columns)
+print("Lasso picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
+imp_coef = coef.sort_index()
+matplotlib.rcParams['figure.figsize'] = (8.0, 10.0)
+imp_coef.plot(kind = "barh")
+plt.title("Feature importance using Lasso Model - CL")
+fig = plt.show()
+st.pyplot(fig)
+
+t2=time.time()
+t_polyfit = float(t2-t1)
+st.write("Time taken: {} seconds".format(t_polyfit))
+
+
 
 
