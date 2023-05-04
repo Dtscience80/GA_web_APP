@@ -6,3 +6,4 @@ seaborn
 pyDeck
 sklearn-genetic
 statsmodels
+mlxtend
