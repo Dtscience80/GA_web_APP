@@ -25,7 +25,7 @@ sys.modules['sklearn.externals.joblib'] = joblib
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.linear_model import LinearRegression
 
-def embed(fung(), x, y, model, target):
+def embed(fung, x, y, model, target):
     import matplotlib
     reg = fung()
     reg.fit(x, y)
@@ -181,7 +181,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 st.subheader(" 5. Embedded Selection algorithm")
 t1=time.time()
 st.write("Process Start", t1)
-embed(LassoCV(), X, Y, 'Lasso CV', target):
+embed(LassoCV, X, Y, 'Lasso CV', target):
 
 
 t2=time.time()
