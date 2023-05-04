@@ -80,7 +80,7 @@ html_temp = """
 stc.html(html_temp)
 
 #upload single file and display it as a dataframe
-st.write('Please select a file to upload:', #008000)
+#st.write('Please select a file to upload:', #008000)
 file = st.file_uploader("Please select a file to upload")
 #file = st.file_uploader("Upload file Excel", type=["xlsx", "xls"])
 url = 'https://raw.githubusercontent.com/Dtscience80/Project_ISAST_2022/main/df_minmax.csv'
@@ -92,7 +92,7 @@ if file is not None:
     df = pd.read_excel(file) 
     st.dataframe(data.head())
 
-st.text("Berikut tabel data anda :", #008000) 
+st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
 st.text("Berikut deskripsi data anda :") 
 st.dataframe(data.describe())
