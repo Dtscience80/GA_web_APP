@@ -73,7 +73,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 #fig = plt.show()
 
 plt.figure(figsize=(12,10))
-cor = df_minmax.corr()
+cor = data.corr()
 sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
 plt.show()
 st.pyplot(fig)
