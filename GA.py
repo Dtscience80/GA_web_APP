@@ -106,7 +106,7 @@ target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda
 st.write('Target Fitur Seleksi:', target)
 
 #Multi select
-#st.text(" Drop Input yang tidak dipakai  : " )
+st.text(" Hilangkan Input dan target yang tidak dipakai !  " )
 dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target yang tidak dipakai) ", header)
 st.write('Feature drop:', dropdata)
 
@@ -122,7 +122,7 @@ st.header('Fitur Seleksi ')
 st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
 
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 fig = plt.figure(figsize=(12,10))
 #ax = sns.boxplot(x=data['CL'])
@@ -130,7 +130,7 @@ fig = plt.figure(figsize=(12,10))
 
 #plt.figure(figsize=(12,10))
 cor = X.corr()
-ax = sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
+ax = sns.heatmap(abs(cor), cmap='PuBuGn' , annot=True, fmt=".2f")
 fig = plt.show()
 st.pyplot(fig)
 
@@ -147,7 +147,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 
 st.subheader(" 2. Sequential Forward Selection (SFS) Algorithms ")
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 st.write("Hasil SFS : ", forward_selection(X, Y))
 t2=time.time()
 t_polyfit = float(t2-t1)
@@ -155,7 +155,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 
 st.subheader(" 3. Sequential backward Selection (SBS) Algorithms ")
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 st.write("Hasil SBS : ", backward_elimination(X, Y))
 t2=time.time()
 t_polyfit = float(t2-t1)
@@ -163,7 +163,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 
 st.subheader(" 4. Sequential Floating Selection Algorithm")
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 X1 = np.array(X)
 sbs = SFS(LinearRegression(),
          k_features=4,
@@ -181,7 +181,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 
 st.subheader(" 5. Embedded Selection algorithm")
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 embed(LassoCV, X, Y, 'Lasso CV', target)
 embed(RidgeCV, X, Y, 'Ridge CV', target)
 
@@ -191,7 +191,7 @@ st.write("Time taken: {} seconds".format(t_polyfit))
 
 st.subheader(" 6. Random Forest (RF) algorithm")
 t1=time.time()
-st.write("Process Start", t1)
+#st.write("Process Start", t1)
 
 reg = RandomForestRegressor()
 reg.fit(X, Y)
