@@ -112,12 +112,12 @@ dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termas
 st.write('Feature drop:', dropdata)
 
 #st.text(dropdata)
-
+Xd = []
 st.text(" Data Anda setelah di filter, dengan target " + target )
 X = data.drop(columns=dropdata) 
 Y = data[target].astype(float) 
 Xd = pd.concat([X, Y], axis=1)
-st.dataframe(Xd, width=1000)
+#st.dataframe(Xd, width=1000)
 
 st.header('Fitur Seleksi ')
 st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
