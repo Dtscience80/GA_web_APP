@@ -63,6 +63,7 @@ X = data.drop(columns=dropdata)
 st.dataframe(X, width=1000)
 
 st.header('Fitur Seleksi ')
+st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
 
 Y = data[target].astype(float) 
 
@@ -77,7 +78,13 @@ ax = sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
 fig = plt.show()
 st.pyplot(fig)
 
-st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
+#Correlation with output variable ex. CL
+cor_target = abs(cor["CL"])
+#Selecting highly correlated features
+relevant_features_CL = cor_target[cor_target>0.5]
+st.write('Feature yang relevan :', relevant_features_CL)
+
+
 
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
