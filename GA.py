@@ -193,7 +193,7 @@ t1=time.time()
 st.write("Process Start", t1)
 
 reg = RandomForestRegressor()
-reg.fit(X, a)
+reg.fit(X, Y)
 fet_ind = np.argsort(reg.feature_importances_)[::-1]
 fet_imp = reg.feature_importances_[fet_ind]
 feature_name = X.columns.values
