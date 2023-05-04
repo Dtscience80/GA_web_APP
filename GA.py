@@ -11,6 +11,7 @@ from sklearn import metrics
 from sklearn.metrics import *
 from sklearn.model_selection import *
 import numpy as np
+import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import seaborn as sns
 import time
