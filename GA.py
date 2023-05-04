@@ -15,13 +15,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import time
 
+'''
 np.__version__ = '1.23'
 st.text(np.__version__)
+'''
 
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
-		<h1 style="color:white;text-align:center;">Feature Selection Genetic Algorithm</h1>
-		<h4 style="color:white;text-align:center;">Free Webb App by @v1tr4 </h4>
+		<h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
+		<h4 style="color:white;text-align:center;">by @v1tr4 </h4>
 		</div>
 		"""
 stc.html(html_temp)
