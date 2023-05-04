@@ -53,7 +53,7 @@ st.write('Target Fitur Seleksi:', target)
 
 #Multi select
 #st.text(" Drop Fitur yang tidak dipakai  : " )
-dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan ", header)
+dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target yang tidak dipakai) ", header)
 st.write('Feature drop:', dropdata)
 
 #st.text(dropdata)
