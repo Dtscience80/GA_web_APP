@@ -15,7 +15,21 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import time
 
-
+def forward_selection(data, target, significance_level=0.05):
+    initial_features = data.columns.tolist()
+    best_features = []
+    while (len(initial_features)>0):
+        remaining_features = list(set(initial_features)-set(best_features))
+        new_pval = pd.Series(index=remaining_features)
+        for new_column in remaining_features:
+            model = sm.OLS(target, sm.add_constant(data[best_features+[new_column]])).fit()
+            new_pval[new_column] = model.pvalues[new_column]
+        min_p_value = new_pval.min()
+        if(min_p_value<significance_level):
+            best_features.append(new_pval.idxmin())
+        else:
+            break
+    return best_features
 
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
@@ -65,6 +79,8 @@ st.dataframe(X, width=1000)
 st.header('Fitur Seleksi ')
 st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
 
+t1=time.time()
+st.write("Process Start", t1)
 Y = data[target].astype(float) 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -84,62 +100,16 @@ cor_target = abs(cor[target])
 relevant_features_CL = cor_target[cor_target>0.5]
 st.write('Feature yang relevan untuk target ' + target + ' adalah : ', relevant_features_CL)
 
-
-
-#estimators = linear_model.LinearRegression()
-estimators = DecisionTreeRegressor()
-#estimators = RandomForestRegressor()
-#estimators = MLPRegressor()
-t1=time.time()
-st.write("Process Start", t1)
-
-report = pd.DataFrame()
-nofeats = [] 
-chosen_feats = [] 
-cvscore = [] 
-
-st.write("Estimator dipakai : ", estimators )
-st.write("Target : ", target )
-for i in range(1,9):  
-  selector = GeneticSelectionCV(estimators,
-                                cv = 5,
-                                verbose = 1,
-                                scoring="neg_mean_squared_error", 
-                                max_features = i,
-                                n_population = 200,
-                                crossover_proba = 0.5,
-                                mutation_proba = 0.2,
-                                n_generations = 50,
-                                crossover_independent_proba=0.5,
-                                mutation_independent_proba=0.1,
-                                tournament_size = 3,
-                                n_gen_no_change=10,
-                                caching=True,
-                                n_jobs=-1)
-  selector = selector.fit(X, Y)
-  genfeats = X.columns[selector.support_]
-  genfeats = list(genfeats)
-  #st.write("Chosen Feats: {} of {}, scores : {} " .format(genfeats, selector.n_features_, round(selector.generation_scores_[-1], 3)))
-
-  cv_score = selector.generation_scores_[-1]
-  nofeats.append(len(genfeats)) 
-  chosen_feats.append(genfeats) 
-  cvscore.append(cv_score)
-
-report["No of Feats"] = nofeats
-report["Chosen Feats"] = chosen_feats
-report["Scores"] = cvscore
 #Lama waktu Proses 
 t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
-#Print Reports 
-report["Scores"] = np.round(report["Scores"], 3)
-report.sort_values(by = "Scores", ascending = False, inplace = True)
-#report.index
-ga_feats = report.iloc[0]["Chosen Feats"]
-DataTable(report)
-st.write("Feature selection of '" + Y.name + "' recommend:", ga_feats)
-st.write("Estimator : {}, reports : ". format(selector.estimator_))
-report
+st.subheader(" 2. Sequential Forward Selection (SFS) Algorithms ")
+t1=time.time()
+st.write("Process Start", t1)
+forward_selection(data, target)
+t2=time.time()
+t_polyfit = float(t2-t1)
+st.write("Time taken: {} seconds".format(t_polyfit))
+
