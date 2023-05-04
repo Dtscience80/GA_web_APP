@@ -16,6 +16,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import time
 
+#importing the necessary libraries
+import joblib
+import sys
+sys.modules['sklearn.externals.joblib'] = joblib
+from mlxtend.feature_selection import SequentialFeatureSelector as SFS
+from sklearn.linear_model import LinearRegression
+
 def forward_selection(data, target, significance_level=0.05):
     initial_features = data.columns.tolist()
     best_features = []
@@ -126,7 +133,7 @@ t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
-st.subheader(" 32. Sequential backward Selection (SBS) Algorithms ")
+st.subheader(" 3. Sequential backward Selection (SBS) Algorithms ")
 t1=time.time()
 st.write("Process Start", t1)
 st.write("Hasil SBS : ", backward_elimination(X, Y))
