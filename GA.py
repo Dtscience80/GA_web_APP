@@ -39,7 +39,7 @@ def embed(fung, x, y, model, target):
     plt.title("Feature importance using " + model + " target " + target)
     fig = plt.show()
     st.pyplot(fig)
-
+    st.write("Score : ", abs(imp_coef))
 
 def forward_selection(data, target, significance_level=0.05):
     initial_features = data.columns.tolist()
@@ -177,7 +177,6 @@ t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
-
 st.subheader(" 5. Embedded Selection algorithm")
 t1=time.time()
 st.write("Process Start", t1)
@@ -188,6 +187,25 @@ t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
 
+st.subheader(" 6. Random Forest (RF) algorithm")
+t1=time.time()
+st.write("Process Start", t1)
 
+reg = ske.RandomForestRegressor()
+reg.fit(X, a)
+fet_ind = np.argsort(reg.feature_importances_)[::-1]
+fet_imp = reg.feature_importances_[fet_ind]
+feature_name = X.columns.values
+labels = feature_name[fet_ind]
+st.write("Feature selected : ", labels)
 
+fig, ax = plt.subplots(1, 1, figsize=(8, 3))
+pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
+ax.set_title('Features importance')
+fig = plt.show()
+st.pyplot(fig)
+
+t2=time.time()
+t_polyfit = float(t2-t1)
+st.write("Time taken: {} seconds".format(t_polyfit))
 
