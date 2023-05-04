@@ -101,10 +101,10 @@ st.dataframe(data.describe())
 #st.sidebar.text('Genetic ALgorithm')
 header = data.columns.tolist()
 
-st.markdown(' ##### Filter data yang dipakai ! ')
 st.text(" feature data anda : " )
 st.text(header)
 
+st.markdown(' ##### Filter data yang dipakai ! ')
 target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda !', header)
 st.write('Target Fitur Seleksi:', target)
 
