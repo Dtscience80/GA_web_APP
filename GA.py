@@ -103,12 +103,12 @@ header = data.columns.tolist()
 st.text(" feature data anda : " )
 st.text(header)
 
-target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda?', header)
+target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda !', header)
 st.write('Target Fitur Seleksi:', target)
 
 #Multi select
 st.text(" Hilangkan Input dan target yang tidak dipakai !  " )
-dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target yang tidak dipakai) ", header)
+dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target) ", header)
 st.write('Feature drop:', dropdata)
 
 #st.text(dropdata)
