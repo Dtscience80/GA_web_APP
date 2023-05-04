@@ -182,7 +182,7 @@ st.subheader(" 5. Embedded Selection algorithm")
 t1=time.time()
 st.write("Process Start", t1)
 embed(LassoCV, X, Y, 'Lasso CV', target)
-embed(RidgeCV, X, Y, 'Lasso CV', target)
+embed(RidgeCV, X, Y, 'Ridge CV', target)
 
 t2=time.time()
 t_polyfit = float(t2-t1)
