@@ -31,7 +31,7 @@ def embed(fung, x, y, model, target):
     reg = fung()
     reg.fit(x, y)
     st.write("Best alpha using " + model + ": %f" % reg.alpha_)
-    st.write("Best score using " + model + ": %f" %reg.score(x,y))
+    st.write("Best score using " + model + ": %f" % reg.score(x,y))
     coef = pd.Series(reg.coef_, index = x.columns)
     st.write("Lasso picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
     imp_coef = coef.sort_index()
