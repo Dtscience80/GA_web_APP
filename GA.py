@@ -77,6 +77,8 @@ ax = sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
 fig = plt.show()
 st.pyplot(fig)
 
+st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
+
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
 #estimators = RandomForestRegressor()
