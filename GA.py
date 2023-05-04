@@ -36,7 +36,7 @@ def embed(fung, x, y, model, target):
     imp_coef = coef.sort_index()
     matplotlib.rcParams['figure.figsize'] = (8.0, 10.0)
     imp_coef.plot(kind = "barh")
-    plt.title("Feature importance using " + model " target " + target)
+    plt.title("Feature importance using " + model + " target " + target)
     fig = plt.show()
     st.pyplot(fig)
 
