@@ -12,6 +12,7 @@ from sklearn.metrics import *
 from sklearn.model_selection import *
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import time
 
 np.__version__ = '1.23'
@@ -65,6 +66,12 @@ st.dataframe(X, width=1000)
 st.header('Fitur Seleksi ')
 
 Y = data[target].astype(float) 
+
+
+fig = plt.figure()
+ax = sns.boxplot(x=data['CL'])
+fig = plt.show()
+st.pyplot(fig)
 
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
