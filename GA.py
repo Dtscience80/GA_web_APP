@@ -68,14 +68,14 @@ st.header('Fitur Seleksi ')
 Y = data[target].astype(float) 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
-#fig = plt.figure()
+fig = plt.figure()
 #ax = sns.boxplot(x=data['CL'])
 #fig = plt.show()
 
-plt.figure(figsize=(12,10))
+#plt.figure(figsize=(12,10))
 cor = data.corr()
-sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
-plt.show()
+ax = sns.heatmap(abs(cor), cmap='PuBuGn' ,annot=True, fmt=".2f")
+fig = plt.show()
 st.pyplot(fig)
 
 #estimators = linear_model.LinearRegression()
