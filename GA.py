@@ -67,11 +67,12 @@ st.header('Fitur Seleksi ')
 
 Y = data[target].astype(float) 
 
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 fig = plt.figure()
 ax = sns.boxplot(x=data['CL'])
 fig = plt.show()
 st.pyplot(fig)
+
 
 #estimators = linear_model.LinearRegression()
 estimators = DecisionTreeRegressor()
