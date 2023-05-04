@@ -32,6 +32,19 @@ def forward_selection(data, target, significance_level=0.05):
             break
     return best_features
 
+def backward_elimination(data, target,significance_level = 0.1):
+    features = data.columns.tolist()
+    while(len(features)>0):
+        features_with_constant = sm.add_constant(data[features])
+        p_values = sm.OLS(target, features_with_constant).fit().pvalues[1:]
+        max_p_value = p_values.max()
+        if(max_p_value >= significance_level):
+            excluded_feature = p_values.idxmax()
+            features.remove(excluded_feature)
+        else:
+            break 
+    return features
+
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
@@ -112,4 +125,14 @@ st.write("Hasil SFS : ", forward_selection(X, Y))
 t2=time.time()
 t_polyfit = float(t2-t1)
 st.write("Time taken: {} seconds".format(t_polyfit))
+
+st.subheader(" 32. Sequential backward Selection (SBS) Algorithms ")
+t1=time.time()
+st.write("Process Start", t1)
+st.write("Hasil SBS : ", backward_elimination(X, Y))
+t2=time.time()
+t_polyfit = float(t2-t1)
+st.write("Time taken: {} seconds".format(t_polyfit))
+
+
 
