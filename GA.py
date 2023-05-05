@@ -33,7 +33,7 @@ def embed(fung, x, y, model, target):
     st.write("Best alpha using " + model + ": %f" % reg.alpha_)
     st.write("Best score using " + model + ": %f" % reg.score(x,y))
     coef = pd.Series(reg.coef_, index = x.columns)
-    st.write("Lasso picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
+    st.write(model + " picked " + str(sum(coef != 0)) + " variables and eliminated the other " +  str(sum(coef == 0)) + " variables")
     imp_coef = coef.sort_index()
     matplotlib.rcParams['figure.figsize'] = (8.0, 10.0)
     imp_coef.plot(kind = "barh")
@@ -109,7 +109,7 @@ target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda
 st.write('Target Fitur Seleksi:', target)
 
 #Multi select
-st.text(" Hilangkan Input dan target yang tidak dipakai !  " )
+st.text(" Hilangkan fitur / Input tidak dipakai, serta semua target !  " )
 dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target) ", header)
 st.write('Feature drop:', dropdata)
 
