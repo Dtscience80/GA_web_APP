@@ -102,7 +102,7 @@ stc.html(html_temp)
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
-       data = pd.read_csv(file)
+       data = pd.read_excel(file)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
     else: 
