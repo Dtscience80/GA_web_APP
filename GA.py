@@ -118,11 +118,10 @@ for file in uploaded_files:
          data.to_csv(file, sep=',', index=False)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
+       # Hapus baris dengan data kosong atau tidak dikenali
+       data = data.dropna()
     else: 
        data = []
-
-# Hapus baris dengan data kosong atau tidak dikenali
-data = data.dropna()
 
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
