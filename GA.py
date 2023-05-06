@@ -41,7 +41,7 @@ def embed(fung, x, y, model, target):
     st.pyplot(fig)
     emb = pd.DataFrame()
     emb["Scores"] = abs(imp_coef)
-    st.write("Score : ", emb.sort_values('Score', ascending=True))
+    st.write("Score : ", emb)
 
 def forward_selection(data, target, significance_level=0.05):
     initial_features = data.columns.tolist()
