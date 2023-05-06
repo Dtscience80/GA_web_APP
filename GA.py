@@ -104,7 +104,8 @@ for file in uploaded_files:
        data = pd.read_file(file)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
-
+    else: 
+       data = []
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
 st.text("Berikut deskripsi data anda :") 
