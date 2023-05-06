@@ -95,7 +95,7 @@ for file in uploaded_files:
 if file is not None:
     #Can be used wherever a "file-like" object is accepted:
     #df= pd.read_csv(file)
-    data = pd.read_excel(file) 
+    data = pd.read_csv(file) 
     st.dataframe(data.head())
 
 st.text("Berikut tabel data anda :") 
