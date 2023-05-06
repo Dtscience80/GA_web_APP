@@ -207,8 +207,8 @@ rf = pd.DataFrame()
 rf["labels"] = labels
 rf["Score"] = fet_imp
 #display dataframe
-st.dataframe(df)
-#st.write("Feature selected : ", labels)
+#st.dataframe(df)
+st.write("Feature selected : ", rf)
 #st.write("Feature Score : ", fet_imp)
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 3))
