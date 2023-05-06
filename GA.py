@@ -72,7 +72,9 @@ def backward_elimination(data, target,significance_level = 0.1):
     return features
 
 def read_file(filename):
-    if filename.endswith('.csv'):
+    if not filename:
+        raise ValueError("Nama file tidak boleh kosong")
+    elif filename.endswith('.csv'):
         df = pd.read_csv(filename)
         return df
     elif filename.endswith('.xlsx'):
@@ -80,7 +82,6 @@ def read_file(filename):
         return df
     else:
         raise ValueError("File harus berformat CSV atau XLSX")
-
 
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
@@ -106,6 +107,7 @@ for file in uploaded_files:
        st.dataframe(data.head())
     else: 
        data = []
+
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
 st.text("Berikut deskripsi data anda :") 
