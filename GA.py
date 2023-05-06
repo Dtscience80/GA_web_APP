@@ -39,7 +39,9 @@ def embed(fung, x, y, model, target):
     plt.title("Feature importance using " + model + " target " + target)
     fig = plt.show()
     st.pyplot(fig)
-    st.write("Score : ", abs(imp_coef))
+    emb = pd.DataFrame()
+    emb["Scores"] = abs(imp_coef)
+    st.write("Score : ", emb)
 
 def forward_selection(data, target, significance_level=0.05):
     initial_features = data.columns.tolist()
