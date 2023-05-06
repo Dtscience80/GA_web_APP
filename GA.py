@@ -105,7 +105,7 @@ for file in uploaded_files:
     if uploaded_files is not None:
        #data = pd.read_csv(file)
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
-       data = pd.read_csv(file, sep='[;:\s]+', engine='python')
+       #data = pd.read_csv(file, sep='[;:\s]+', engine='python')
        for d in [',', ';', '\t', '|']:
           try:
             temp = pd.read_csv(file, sep=d)
@@ -114,8 +114,10 @@ for file in uploaded_files:
           except:
             pass
        if delimiter != ',' and delimiter is not None:
-         data = pd.read_csv(file, sep=delimiter)
-         data.to_csv(file, sep=',', index=False)
+         # Mengganti delimiter menjadi koma
+         data = temp.applymap(lambda x: str(x).replace(delimiter, ','))
+       else:    
+         data = pd.read_csv(file)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
        # Hapus baris dengan data kosong atau tidak dikenali
