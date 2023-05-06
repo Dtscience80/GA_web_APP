@@ -202,8 +202,14 @@ fet_ind = np.argsort(reg.feature_importances_)[::-1]
 fet_imp = reg.feature_importances_[fet_ind]
 feature_name = X.columns.values
 labels = feature_name[fet_ind]
-st.write("Feature selected : ", labels)
-st.write("Feature Score : ", fet_imp)
+
+rf = pd.DataFrame()
+rf["labels"] = labels
+rf["Score"] = fet_imp
+#display dataframe
+st.dataframe(df)
+#st.write("Feature selected : ", labels)
+#st.write("Feature Score : ", fet_imp)
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 3))
 pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
