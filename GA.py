@@ -107,14 +107,14 @@ for file in uploaded_files:
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
        data = pd.read_csv(file, sep='[;:\s]+', engine='python')
        for d in [',', ';', '\t', '|']:
-   	 try:
+          try:
             temp = pd.read_csv(file, sep=d)
             delimiter = d
             break
-    	 except:
+          except:
             pass
        if delimiter != ',' and delimiter is not None:
-    	   data = pd.read_csv(file, sep=delimiter)
+         data = pd.read_csv(file, sep=delimiter)
            data.to_csv(file, sep=',', index=False)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
