@@ -100,6 +100,7 @@ stc.html(html_temp)
 #Multiple files
 #adding a file uploader to accept multiple CSV file
 delimiter = None
+data =[]
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
@@ -120,8 +121,6 @@ for file in uploaded_files:
        st.dataframe(data.head())
        # Hapus baris dengan data kosong atau tidak dikenali
        data = data.dropna()
-    else: 
-       data = []
 
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
