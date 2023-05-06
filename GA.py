@@ -71,6 +71,17 @@ def backward_elimination(data, target,significance_level = 0.1):
             break 
     return features
 
+def read_file(filename):
+    if filename.endswith('.csv'):
+        df = pd.read_csv(filename)
+        return df
+    elif filename.endswith('.xlsx'):
+        df = pd.read_excel(filename)
+        return df
+    else:
+        raise ValueError("File harus berformat CSV atau XLSX")
+
+
 html_temp = """
 		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
@@ -92,7 +103,7 @@ for file in uploaded_files:
     data = pd.read_csv(file)
     st.write("File uploaded:", file.name)
 
-if file is not None:
+if uploaded_files is not None:
     #Can be used wherever a "file-like" object is accepted:
     #df= pd.read_csv(file)
     data = pd.read_csv(file) 
