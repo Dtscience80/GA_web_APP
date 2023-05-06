@@ -111,6 +111,9 @@ for file in uploaded_files:
     else: 
        data = []
 
+# Hapus baris dengan data kosong atau tidak dikenali
+data = data.dropna()
+
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
 st.text("Berikut deskripsi data anda :") 
