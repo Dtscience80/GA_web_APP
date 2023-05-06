@@ -106,7 +106,7 @@ data =[]
 
 st.markdown(' ##### Pilih Delimiter (separator) file yang dipakai ! ')
 delimiter = st.selectbox('Tentukan Delimiter file tabel anda !', (':', ';', ',', '.', '/', '|', '+'))
-st.write('Delimiter file tabel anda :', delimiter)
+st.write('Delimiter file tabel anda \'', delimiter + '\'')
 
 uploaded_files = st.file_uploader("Please select a csv/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
