@@ -98,7 +98,7 @@ stc.html(html_temp)
 
 #Multiple files
 #adding a file uploader to accept multiple CSV file
-delimiter = None
+delimiter = ','
 data =[]
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
