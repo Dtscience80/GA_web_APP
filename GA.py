@@ -98,16 +98,12 @@ stc.html(html_temp)
 
 #Multiple files
 #adding a file uploader to accept multiple CSV file
-uploaded_files = st.file_uploader("Please select a CSV file", accept_multiple_files=True)
+uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
-    data = pd.read_csv(file)
-    st.write("File uploaded:", file.name)
-
-if uploaded_files is not None:
-    #Can be used wherever a "file-like" object is accepted:
-    #df= pd.read_csv(file)
-    data = pd.read_csv(file) 
-    st.dataframe(data.head())
+    if uploaded_files is not None:
+    	data = pd.read_file(file)
+    	st.write("File uploaded:", file.name)
+	st.dataframe(data.head())
 
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
