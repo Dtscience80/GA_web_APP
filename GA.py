@@ -101,9 +101,9 @@ stc.html(html_temp)
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
-    	data = pd.read_file(file)
-    	st.write("File uploaded:", file.name)
-	st.dataframe(data.head())
+       data = pd.read_file(file)
+       st.write("File uploaded:", file.name)
+       st.dataframe(data.head())
 
 st.text("Berikut tabel data anda :") 
 st.dataframe(data, width=1000)
