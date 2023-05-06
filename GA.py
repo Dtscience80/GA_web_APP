@@ -104,8 +104,14 @@ for file in uploaded_files:
     try:
     	df = pd.read_csv(file)
     	delimiter = df._engine.data.dialect.delimiter
-    	print(f"Delimiter file CSV adalah: {delimiter}")
-	
+    	print(f"Delimiter file CSV adalah: {delimiter}")	
+     except:
+    	try:
+            df = pd.read_excel(filename)
+            delimiter = df._engine.data.dialect.delimiter
+            print(f"Delimiter file Excel adalah: {delimiter}")
+    	except:
+            print("File tidak ditemukan atau tidak dapat dibaca.")	
     if uploaded_files is not None:
        #data = pd.read_csv(file)
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
