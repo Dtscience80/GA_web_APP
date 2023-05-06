@@ -105,7 +105,7 @@ for file in uploaded_files:
     	df = pd.read_csv(file)
     	delimiter = df._engine.data.dialect.delimiter
     	print(f"Delimiter file CSV adalah: {delimiter}")	
-     except:
+    except:
     	try:
             df = pd.read_excel(filename)
             delimiter = df._engine.data.dialect.delimiter
