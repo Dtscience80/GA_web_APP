@@ -108,7 +108,7 @@ st.markdown(' ##### Pilih Delimiter (separator) file yang dipakai ! ')
 delimiter = st.selectbox('Tentukan Delimiter file tabel anda !', (':', ';', ',', '.', '/', '|', '+'))
 st.write('Delimiter file tabel anda :', delimiter)
 
-uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
+uploaded_files = st.file_uploader("Please select a csv/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
        #data = pd.read_csv(file, sep='[;:\s]+', engine='python')   
