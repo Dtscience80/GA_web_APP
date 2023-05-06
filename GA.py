@@ -1,4 +1,3 @@
-
 import streamlit as st
 import streamlit.components.v1 as stc
 import pandas as pd
@@ -84,11 +83,11 @@ def read_file(filename):
         raise ValueError("File harus berformat CSV atau XLSX")
 
 html_temp = """
-		<div style="background-color:#9900FF;padding:10px;border-radius:10px">
-		<h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
-		<h4 style="color:white;text-align:center;">by @v1tr4 </h4>
-		</div>
-		"""
+    <div style="background-color:#9900FF;padding:10px;border-radius:10px">
+    <h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
+    <h4 style="color:white;text-align:center;">by @v1tr4 </h4>
+    </div>
+    """
 stc.html(html_temp)
 
 #upload single file and display it as a dataframe
@@ -122,130 +121,129 @@ for file in uploaded_files:
        # Hapus baris dengan data kosong atau tidak dikenali
        data = data.dropna()
 
-st.text("Berikut tabel data anda :") 
-st.dataframe(data, width=1000)
-st.text("Berikut deskripsi data anda :") 
-st.dataframe(data.describe())
-
-#st.sidebar.text('Feature seleksi ')
-#st.sidebar.text('Genetic ALgorithm')
-header = data.columns.tolist()
-
-st.text(" feature data anda : " )
-st.text(header)
-
-st.markdown(' ##### Filter data yang dipakai ! ')
-target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda !', header)
-st.write('Target Fitur Seleksi:', target)
-
-#Multi select
-st.text(" Hilangkan fitur / Input tidak dipakai, serta semua target !  " )
-dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target) ", header)
-st.write('Feature drop:', dropdata)
-
-#st.text(dropdata)
-Xd = []
-st.text(" Data Anda setelah di filter, dengan target " + target )
-X = data.drop(columns=dropdata) 
-Y = data[target].astype(float) 
-Xd = pd.concat([X, Y], axis=1)
-st.dataframe(Xd)
-
-st.header('Fitur Seleksi ')
-st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
-
-t1=time.time()
-#st.write("Process Start", t1)
-st.set_option('deprecation.showPyplotGlobalUse', False)
-fig = plt.figure(figsize=(12,10))
-#ax = sns.boxplot(x=data['CL'])
-#fig = plt.show()
-
-#plt.figure(figsize=(12,10))
-cor = Xd.corr()
-ax = sns.heatmap(abs(cor), cmap='PuBuGn' , annot=True, fmt=".2f")
-fig = plt.show()
-st.pyplot(fig)
-
-#Correlation with output variable ex. CL
-cor_target = abs(cor[target])
-#Selecting highly correlated features
-relevant_features_CL = cor_target[cor_target>0.5]
-st.write('Feature yang relevan untuk target ' + target + ' adalah : ', relevant_features_CL)
-
-#Lama waktu Proses 
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
-st.subheader(" 2. Sequential Forward Selection (SFS) Algorithms ")
-t1=time.time()
-#st.write("Process Start", t1)
-st.write("Hasil SFS : ", forward_selection(X, Y))
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
-st.subheader(" 3. Sequential backward Selection (SBS) Algorithms ")
-t1=time.time()
-#st.write("Process Start", t1)
-st.write("Hasil SBS : ", backward_elimination(X, Y))
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
-st.subheader(" 4. Sequential Floating Selection Algorithm")
-t1=time.time()
-#st.write("Process Start", t1)
-X1 = np.array(X)
-sbs = SFS(LinearRegression(),
-         k_features=4,
-         forward=False,
-         floating=True,
-         cv=0)
-sbs.fit(X1, Y)
-label = list(map(int, sbs.k_feature_names_))
-feature_name = X.columns.values
-labels = feature_name[label]
-st.write("Hasil Sequential Floating Selection : ", labels)
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
-st.subheader(" 5. Embedded Selection algorithm")
-t1=time.time()
-#st.write("Process Start", t1)
-embed(LassoCV, X, Y, 'Lasso CV', target)
-embed(RidgeCV, X, Y, 'Ridge CV', target)
-
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
-st.subheader(" 6. Random Forest (RF) algorithm")
-t1=time.time()
-#st.write("Process Start", t1)
-
-reg = RandomForestRegressor()
-reg.fit(X, Y)
-fet_ind = np.argsort(reg.feature_importances_)[::-1]
-fet_imp = reg.feature_importances_[fet_ind]
-feature_name = X.columns.values
-labels = feature_name[fet_ind]
-
-rf = pd.DataFrame()
-rf["labels"] = labels
-rf["Score"] = fet_imp
-#display dataframe
-st.write("Feature selected : ", rf)
-
-fig, ax = plt.subplots(1, 1, figsize=(8, 3))
-pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
-ax.set_title('Features importance')
-fig = plt.show()
-st.pyplot(fig)
-
-t2=time.time()
-t_polyfit = float(t2-t1)
-st.write("Time taken: {} seconds".format(t_polyfit))
-
+       st.text("Berikut tabel data anda :") 
+       st.dataframe(data, width=1000)
+       st.text("Berikut deskripsi data anda :") 
+       st.dataframe(data.describe())
+       
+       #st.sidebar.text('Feature seleksi ')
+       #st.sidebar.text('Genetic ALgorithm')
+       header = data.columns.tolist()
+       
+       st.text(" feature data anda : " )
+       st.text(header)
+       
+       st.markdown(' ##### Filter data yang dipakai ! ')
+       target = st.selectbox('Tentukan target machine learning untuk fitur seleksi anda !', header)
+       st.write('Target Fitur Seleksi:', target)
+       
+       #Multi select
+       st.text(" Hilangkan fitur / Input tidak dipakai, serta semua target !  " )
+       dropdata = st.multiselect("Tentukan Feature data yang perlu di hilangkan (termasuk target) ", header)
+       st.write('Feature drop:', dropdata)
+       
+       #st.text(dropdata)
+       Xd = []
+       st.text(" Data Anda setelah di filter, dengan target " + target )
+       X = data.drop(columns=dropdata) 
+       Y = data[target].astype(float) 
+       Xd = pd.concat([X, Y], axis=1)
+       st.dataframe(Xd)
+       
+       st.header('Fitur Seleksi ')
+       st.subheader(" 1. Filter Methode (Pearson correlation coefficient) ")
+       
+       t1=time.time()
+       #st.write("Process Start", t1)
+       st.set_option('deprecation.showPyplotGlobalUse', False)
+       fig = plt.figure(figsize=(12,10))
+       #ax = sns.boxplot(x=data['CL'])
+       #fig = plt.show()
+       
+       #plt.figure(figsize=(12,10))
+       cor = Xd.corr()
+       ax = sns.heatmap(abs(cor), cmap='PuBuGn' , annot=True, fmt=".2f")
+       fig = plt.show()
+       st.pyplot(fig)
+       
+       #Correlation with output variable ex. CL
+       cor_target = abs(cor[target])
+       #Selecting highly correlated features
+       relevant_features_CL = cor_target[cor_target>0.5]
+       st.write('Feature yang relevan untuk target ' + target + ' adalah : ', relevant_features_CL)
+       
+       #Lama waktu Proses 
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
+       
+       st.subheader(" 2. Sequential Forward Selection (SFS) Algorithms ")
+       t1=time.time()
+       #st.write("Process Start", t1)
+       st.write("Hasil SFS : ", forward_selection(X, Y))
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
+       
+       st.subheader(" 3. Sequential backward Selection (SBS) Algorithms ")
+       t1=time.time()
+       #st.write("Process Start", t1)
+       st.write("Hasil SBS : ", backward_elimination(X, Y))
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
+       
+       st.subheader(" 4. Sequential Floating Selection Algorithm")
+       t1=time.time()
+       #st.write("Process Start", t1)
+       X1 = np.array(X)
+       sbs = SFS(LinearRegression(),
+                k_features=4,
+                forward=False,
+                floating=True,
+                cv=0)
+       sbs.fit(X1, Y)
+       label = list(map(int, sbs.k_feature_names_))
+       feature_name = X.columns.values
+       labels = feature_name[label]
+       st.write("Hasil Sequential Floating Selection : ", labels)
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
+       
+       st.subheader(" 5. Embedded Selection algorithm")
+       t1=time.time()
+       #st.write("Process Start", t1)
+       embed(LassoCV, X, Y, 'Lasso CV', target)
+       embed(RidgeCV, X, Y, 'Ridge CV', target)
+       
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
+       
+       st.subheader(" 6. Random Forest (RF) algorithm")
+       t1=time.time()
+       #st.write("Process Start", t1)
+       
+       reg = RandomForestRegressor()
+       reg.fit(X, Y)
+       fet_ind = np.argsort(reg.feature_importances_)[::-1]
+       fet_imp = reg.feature_importances_[fet_ind]
+       feature_name = X.columns.values
+       labels = feature_name[fet_ind]
+       
+       rf = pd.DataFrame()
+       rf["labels"] = labels
+       rf["Score"] = fet_imp
+       #display dataframe
+       st.write("Feature selected : ", rf)
+       
+       fig, ax = plt.subplots(1, 1, figsize=(8, 3))
+       pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
+       ax.set_title('Features importance')
+       fig = plt.show()
+       st.pyplot(fig)
+       
+       t2=time.time()
+       t_polyfit = float(t2-t1)
+       st.write("Time taken: {} seconds".format(t_polyfit))
