@@ -107,7 +107,7 @@ uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_mu
 for file in uploaded_files:
     if uploaded_files is not None:
        #data = pd.read_csv(file, sep='[;:\s]+', engine='python')   
-       data = pd.read_csv(file, sep=',', engine='python')
+       data = pd.read_csv(file, sep=';', engine='python')
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
        data = data.dropna()
