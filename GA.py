@@ -102,7 +102,11 @@ stc.html(html_temp)
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
-       data = pd.read_csv(file)
+       #data = pd.read_csv(file)
+       # Membaca file CSV dengan delimiter ';', ':', atau spasi
+       data = pd.read_csv(file, sep='[;:\s]+', engine='python')
+	# Mengubah delimiter dari ',' menjadi ';'
+       data = data.applymap(lambda x: str(x).replace(';', ','))
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
     else: 
