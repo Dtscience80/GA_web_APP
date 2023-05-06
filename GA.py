@@ -115,7 +115,7 @@ for file in uploaded_files:
             pass
        if delimiter != ',' and delimiter is not None:
          data = pd.read_csv(file, sep=delimiter)
-           data.to_csv(file, sep=',', index=False)
+         data.to_csv(file, sep=',', index=False)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
     else: 
