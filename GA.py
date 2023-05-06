@@ -117,7 +117,7 @@ for file in uploaded_files:
          # Mengganti delimiter menjadi koma
          data = temp.applymap(lambda x: str(x).replace(delimiter, ','))
        else:    
-         data = pd.read_csv(file)
+         data = pd.read_csv(file, sep=',')
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
        # Hapus baris dengan data kosong atau tidak dikenali
