@@ -101,6 +101,11 @@ stc.html(html_temp)
 #adding a file uploader to accept multiple CSV file
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
+    try:
+    	df = pd.read_csv(file)
+    	delimiter = df._engine.data.dialect.delimiter
+    	print(f"Delimiter file CSV adalah: {delimiter}")
+	
     if uploaded_files is not None:
        #data = pd.read_csv(file)
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
