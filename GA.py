@@ -106,7 +106,8 @@ for file in uploaded_files:
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
        data = pd.read_csv(file, sep='[;:\s]+', engine='python')
 	# Mengubah delimiter dari ',' menjadi ';'
-       data = data.applymap(lambda x: str(x).replace(';', ','))
+       if data._engine.data.dialect.delimiter == '[;:\s]+' :
+       	  data = data.applymap(lambda x: str(x).replace(';', ','))
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
     else: 
