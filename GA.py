@@ -99,13 +99,23 @@ stc.html(html_temp)
 
 #Multiple files
 #adding a file uploader to accept multiple CSV file
+delimiter = None
 uploaded_files = st.file_uploader("Please select a CSV/xlsx/xlx file", accept_multiple_files=True)
 for file in uploaded_files:
     if uploaded_files is not None:
        #data = pd.read_csv(file)
        # Membaca file CSV dengan delimiter ';', ':', atau spasi
        data = pd.read_csv(file, sep='[;:\s]+', engine='python')
-       data = data.applymap(lambda x: str(x).replace(';', ','))
+       for d in [',', ';', '\t', '|']:
+   	 try:
+            temp = pd.read_csv(file, sep=d)
+            delimiter = d
+            break
+    	 except:
+            pass
+       if delimiter != ',' and delimiter is not None:
+    	   data = pd.read_csv(file, sep=delimiter)
+           data.to_csv(file, sep=',', index=False)
        st.write("File uploaded:", file.name)
        st.dataframe(data.head())
     else: 
