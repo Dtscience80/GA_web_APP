@@ -88,7 +88,7 @@ def read_file(filename):
 html_temp = """
     <div style="background-color:#9900FF;padding:10px;border-radius:10px">
     <h1 style="color:white;text-align:center;">Feature Selection webb Application</h1>
-    <h4 style="color:white;text-align:center;">by @v1tr4 </h4>
+    <h4 style="color:white;text-align:center;">by @v1t </h4>
     </div>
     """
 stc.html(html_temp)
