@@ -119,7 +119,7 @@ for file in uploaded_files:
        st.dataframe(data.head())
        data = data.dropna()
 
-       st.text("Berikut tabel data anda :") 
+       st.text("Berikut tabel data" + judul + " anda :") 
        st.dataframe(data, width=1000)
        st.text("Berikut deskripsi data anda :") 
        st.dataframe(data.describe())
