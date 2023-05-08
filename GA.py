@@ -204,7 +204,9 @@ for file in uploaded_files:
        label = list(map(int, sbs.k_feature_names_))
        feature_name = X.columns.values
        labels = feature_name[label]
-       st.write("Hasil Sequential Floating Selection data " + judul + " : ", labels)
+       sfls = pd.DataFrame()
+       sfls["Feature Selected"] = labels
+       st.write("Hasil Sequential Floating Selection data " + judul + " : ", sfls)
        t2=time.time()
        t_polyfit = float(t2-t1)
        st.write("Time taken: {} seconds".format(t_polyfit))
@@ -235,7 +237,7 @@ for file in uploaded_files:
        rf["labels"] = labels
        rf["Score"] = fet_imp
        #display dataframe
-       st.write("Feature selected : ", rf)
+       st.write("Feature selected untuk data " + judul + " adalah : ", rf)
        
        fig, ax = plt.subplots(1, 1, figsize=(8, 3))
        pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
