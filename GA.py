@@ -241,7 +241,7 @@ for file in uploaded_files:
        
        fig, ax = plt.subplots(1, 1, figsize=(8, 3))
        pd.Series(fet_imp, index=labels).plot(kind='bar', ax=ax)
-       ax.set_title('Features importance')
+       ax.set_title('Features importance ' + judul + ' data')
        fig = plt.show()
        st.pyplot(fig)
        
