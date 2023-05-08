@@ -119,9 +119,9 @@ for file in uploaded_files:
        st.dataframe(data.head())
        data = data.dropna()
 
-       st.text("Berikut tabel data" + judul + " anda :") 
+       st.text("Berikut tabel data " + judul + " anda :") 
        st.dataframe(data, width=1000)
-       st.text("Berikut deskripsi data anda :") 
+       st.text("Berikut deskripsi data " + judul + " anda :") 
        st.dataframe(data.describe())
        
        #st.sidebar.text('Feature seleksi ')
@@ -142,7 +142,7 @@ for file in uploaded_files:
        
        #st.text(dropdata)
        Xd = []
-       st.text(" Data Anda setelah di filter, dengan target " + target )
+       st.text(" Data " + judul + " Anda setelah di filter, dengan target " + target )
        X = data.drop(columns=dropdata) 
        Y = data[target].astype(float) 
        Xd = pd.concat([X, Y], axis=1)
@@ -168,7 +168,7 @@ for file in uploaded_files:
        cor_target = abs(cor[target])
        #Selecting highly correlated features
        relevant_features_CL = cor_target[cor_target>0.5]
-       st.write('Feature yang relevan untuk target ' + target + ' adalah : ', relevant_features_CL)
+       st.write('Feature yang relevan untuk data ' + judul + ' dengan target ' + target + ' adalah : ', relevant_features_CL)
        
        #Lama waktu Proses 
        t2=time.time()
@@ -178,7 +178,7 @@ for file in uploaded_files:
        st.subheader(" 2. Sequential Forward Selection (SFS) Algorithms ")
        t1=time.time()
        #st.write("Process Start", t1)
-       st.write("Hasil SFS : ", forward_selection(X, Y))
+       st.write("Hasil SFS data " + judul + " : ", forward_selection(X, Y))
        t2=time.time()
        t_polyfit = float(t2-t1)
        st.write("Time taken: {} seconds".format(t_polyfit))
@@ -186,7 +186,7 @@ for file in uploaded_files:
        st.subheader(" 3. Sequential backward Selection (SBS) Algorithms ")
        t1=time.time()
        #st.write("Process Start", t1)
-       st.write("Hasil SBS : ", backward_elimination(X, Y))
+       st.write("Hasil SBS data " + judul + " : ", backward_elimination(X, Y))
        t2=time.time()
        t_polyfit = float(t2-t1)
        st.write("Time taken: {} seconds".format(t_polyfit))
@@ -204,7 +204,7 @@ for file in uploaded_files:
        label = list(map(int, sbs.k_feature_names_))
        feature_name = X.columns.values
        labels = feature_name[label]
-       st.write("Hasil Sequential Floating Selection : ", labels)
+       st.write("Hasil Sequential Floating Selection data " + judul + " : ", labels)
        t2=time.time()
        t_polyfit = float(t2-t1)
        st.write("Time taken: {} seconds".format(t_polyfit))
@@ -212,6 +212,7 @@ for file in uploaded_files:
        st.subheader(" 5. Embedded Selection algorithm")
        t1=time.time()
        #st.write("Process Start", t1)
+       st.write("Hasil untuk metode embedded feature selection untuk data " + judul + " adalah ")
        embed(LassoCV, X, Y, 'Lasso CV', target)
        embed(RidgeCV, X, Y, 'Ridge CV', target)
        
