@@ -104,6 +104,8 @@ stc.html(html_temp)
 delimiter = ','
 data =[]
 
+judul = st.text_area("Tuliskan Nama data anda")
+
 st.markdown(' ##### Pilih Delimiter (separator) file yang dipakai ! ')
 delimiter = st.selectbox('Tentukan Delimiter file tabel anda !', (':', ';', ',', '.', '/', '|', '+'))
 st.write('Delimiter file tabel anda \'', delimiter + '\'')
